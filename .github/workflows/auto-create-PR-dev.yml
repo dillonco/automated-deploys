@@ -1,4 +1,4 @@
-name: Open a pull request to merge Development into Staging
+name: Open Pull Request
 on:
   push:
     branches:
@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: create pull request
+      - name: Open Pull Request
         run: |
           gh pr create -B main -H development \
             --title 'Merge Dev into Staging' \
-            --body 'Automated PR that will be merged Mondays and Thursdays at 7pm EST.  
-                    /schedule' \
+            --body 'Automated PR that will be merged Mondays and Thursdays at 7pm EST.' \
             --label 'automatic'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
