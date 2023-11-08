@@ -1,8 +1,5 @@
-name: Merge Schedule
-
+name: Merge Pull Request
 on:
-  pull_request:
-    types: labeled
   schedule:
     # https://crontab.guru/every-hour
     - cron: '*/5 * * * *'
@@ -13,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.label.name == 'automatic' }}
     steps:
-      - name: create pull request
+      - name: Merge Pull Request
         run: |
           gh pr merge --auto -b 'Automatically merged by GitHub'
         env:
