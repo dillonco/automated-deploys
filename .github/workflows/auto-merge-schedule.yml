@@ -9,7 +9,7 @@ on:
 permissions:
   pull-requests: write
 jobs:
-  merge_schedule:
+  auto-merge:
     runs-on: ubuntu-latest
     if: ${{ github.event.label.name == 'automatic' }}
     steps:
