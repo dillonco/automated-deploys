@@ -14,8 +14,7 @@ jobs:
         run: |
           gh pr create -B main -H development \
             --title 'Merge Dev into Staging' \
-            --body 'Automated PR that will be merged Mondays and Thursdays at 7pm EST.  
-                    /schedule' \
+            --body '/schedule' \
             --label 'automatic'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
