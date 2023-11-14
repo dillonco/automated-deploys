@@ -10,6 +10,8 @@ jobs:
   mergePR:
     runs-on: ubuntu-latest
     steps:
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%b %d %Y')" >> $GITHUB_ENV
       - uses: actions/checkout@v4
         with:
           ref: development
@@ -21,6 +23,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge Pull Request
         run: |
-          gh pr merge ${{ env.PR }} --auto -m -b 'Automatically merged by our GitHub Action'
+          gh pr merge ${{ env.PR }} --auto -m
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
