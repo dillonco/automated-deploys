@@ -9,11 +9,13 @@ jobs:
   createPR:
     runs-on: ubuntu-latest
     steps:
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%b %d %Y')" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - name: Open Pull Request
         run: |
           gh pr create -B main -H development \
-            --title 'Merge Dev into Staging' \
+            --title 'Merge Dev into Staging ${{ env.NOW }}' \
             --body 'Automated PR that will be merged Mondays and Thursdays at 7pm EST.' \
             --label 'automatic'
         env:
