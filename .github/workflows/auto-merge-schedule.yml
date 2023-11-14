@@ -1,7 +1,6 @@
 name: Merge Pull Request
 on:
   schedule:
-    # https://crontab.guru/every-hour
     - cron: '*/5 * * * *'
 permissions:
   pull-requests: write
